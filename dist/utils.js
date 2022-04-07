@@ -7,7 +7,7 @@ exports.PageTitleNotification = {
         interval: null
     },
     On: function (notification, intervalSpeed) {
-        if (document.title) {
+        if (typeof document !== 'undefined') {
             this.vars.interval = setInterval(() => {
                 document.title = (this.vars.originalTitle == document.title) ? notification : this.vars.originalTitle;
             }, (intervalSpeed) ? intervalSpeed : 1000);
@@ -17,7 +17,7 @@ exports.PageTitleNotification = {
         if (this.vars.interval) {
             clearInterval(this.vars.interval);
         }
-        if (document.title) {
+        if (typeof document !== 'undefined') {
             document.title = this.vars.originalTitle;
         }
     }

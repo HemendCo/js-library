@@ -6,10 +6,10 @@ export const PageTitleNotification: PageTitleNotificationInterface = {
         interval : null
     },
     On: function(notification: string, intervalSpeed: number) {
-        if(document.title) {
+        if(typeof document !== 'undefined') {
             this.vars.interval = setInterval(
             () => {
-                document.title = (this.vars.originalTitle == document.title) ? notification : this.vars.originalTitle;
+                document!.title = (this.vars.originalTitle == document.title) ? notification : this.vars.originalTitle;
             }, (intervalSpeed) ? intervalSpeed : 1000);
         }
     },
@@ -17,8 +17,8 @@ export const PageTitleNotification: PageTitleNotificationInterface = {
         if(this.vars.interval) {
             clearInterval(this.vars.interval);
         }
-        if(document.title) {
-            document.title = this.vars.originalTitle;
+        if(typeof document !== 'undefined') {
+            document!.title = this.vars.originalTitle;
         }
     }
 }
