@@ -2,7 +2,7 @@
 export interface PageTitleNotificationInterface {
     vars: {
         originalTitle: string;
-        interval: NodeJS.Timer|null;
+        interval: NodeJS.Timer | null;
     };
     On(notification: string, intervalSpeed: number) : void;
     Off() : void;
