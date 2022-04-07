@@ -4,15 +4,15 @@
   "description": "Hemend js library",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "keywords": [
-    "hemend",
-    "utils"
-  ],
   "scripts": {
     "build": "tsc",
     "test": "mocha --reporter spec"
   },
-  "author": "Balal Arast <arastbalal@gmail.com>",
+  "keywords": [
+    "hemend",
+    "utils"
+  ],
+  "author": "Balal Arast <arastbalal@gmail.com> (https://balalarast.com)",
   "license": "MIT",
   "repository": {
     "type": "git",
