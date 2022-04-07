@@ -1,7 +1,7 @@
 export interface PageTitleNotificationInterface {
     vars: {
         originalTitle: string;
-        interval: ReturnType<typeof setTimeout> | null;
+        interval: ReturnType<typeof setInterval> | null;
     };
     On(notification: string, intervalSpeed: number): void;
     Off(): void;

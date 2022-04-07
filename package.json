@@ -1,6 +1,6 @@
 {
   "name": "hemend-js-library",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Hemend js library",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
