@@ -1,8 +1,7 @@
-/// <reference types="node" />
 export interface PageTitleNotificationInterface {
     vars: {
         originalTitle: string;
-        interval: NodeJS.Timer | null;
+        interval: ReturnType<typeof setTimeout> | null;
     };
     On(notification: string, intervalSpeed: number): void;
     Off(): void;
