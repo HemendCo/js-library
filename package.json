@@ -4,6 +4,10 @@
   "description": "Hemend jslib",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "keywords": [
+    "hemend",
+    "utils"
+  ],
   "scripts": {
     "build": "tsc",
     "test": "mocha --reporter spec"
