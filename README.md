@@ -1,2 +1,2 @@
-# jslib
-Hemend js libraries
+# js-library
+Hemend js library
