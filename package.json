@@ -1,5 +1,5 @@
 {
-  "name": "hemend-js-lib",
+  "name": "hemend-js-library",
   "version": "1.0.5",
   "description": "Hemend js library",
   "main": "dist/index.js",
@@ -16,9 +16,9 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/HemendCo/js-lib.git"
+    "url": "git+https://github.com/HemendCo/js-library.git"
   },
-  "homepage": "https://github.com/HemendCo/js-lib#readme",
+  "homepage": "https://github.com/HemendCo/js-library#readme",
   "devDependencies": {
     "chai": "^4.3.6",
     "mocha": "^9.2.2",
