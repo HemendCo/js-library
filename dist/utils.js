@@ -1,6 +1,13 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.paginate = exports.leftPad = exports.capitalLettersAndRemoveSeperator = exports.separatorBeforeCapitalLetters = exports.findIndexInArrayObject = exports.removeDuplicatesSafe = exports.PageTitleNotification = void 0;
+exports.paginate = exports.leftPad = exports.capitalLettersAndRemoveSeperator = exports.separatorBeforeCapitalLetters = exports.findIndexInArrayObject = exports.removeDuplicatesSafe = exports.PageTitleNotification = exports.storageBridge = exports.storage = void 0;
+var storage_1 = require("./storage");
+Object.defineProperty(exports, "storage", { enumerable: true, get: function () { return __importDefault(storage_1).default; } });
+var storageBridge_1 = require("./storageBridge");
+Object.defineProperty(exports, "storageBridge", { enumerable: true, get: function () { return __importDefault(storageBridge_1).default; } });
 exports.PageTitleNotification = {
     vars: {
         originalTitle: typeof document !== 'undefined' ? document === null || document === void 0 ? void 0 : document.title : '',
@@ -61,12 +68,12 @@ exports.findIndexInArrayObject = findIndexInArrayObject;
  * @param {string} [separator]
  * @returns
  */
-const separatorBeforeCapitalLetters = function (string, separator) {
+function separatorBeforeCapitalLetters(string, separator) {
     separator = separator !== null && separator !== void 0 ? separator : ' ';
     string = string.replace(/([a-z])([A-Z])/g, '$1' + separator + '$2');
     string = string.replace(/([A-Z])([A-Z][a-z])/g, '$1' + separator + '$2');
     return string;
-};
+}
 exports.separatorBeforeCapitalLetters = separatorBeforeCapitalLetters;
 /**
  *
@@ -74,10 +81,10 @@ exports.separatorBeforeCapitalLetters = separatorBeforeCapitalLetters;
  * @param separator
  * @returns
  */
-const capitalLettersAndRemoveSeperator = function (string, separator) {
+function capitalLettersAndRemoveSeperator(string, separator) {
     separator = separator !== null && separator !== void 0 ? separator : ' ';
     return string.replace(new RegExp('(^|' + separator + ').', 'g'), s => s.slice(-1).toUpperCase());
-};
+}
 exports.capitalLettersAndRemoveSeperator = capitalLettersAndRemoveSeperator;
 /**
  *
@@ -85,13 +92,13 @@ exports.capitalLettersAndRemoveSeperator = capitalLettersAndRemoveSeperator;
  * @param targetLength
  * @returns
  */
-const leftPad = function (number, targetLength) {
+function leftPad(number, targetLength) {
     let output = number + '';
     while (output.length < targetLength) {
         output = '0' + output;
     }
     return output;
-};
+}
 exports.leftPad = leftPad;
 /**
  *
@@ -101,7 +108,7 @@ exports.leftPad = leftPad;
  * @param maxPages
  * @returns
  */
-const paginate = function (totalItems, currentPage, pageSize, maxPages) {
+function paginate(totalItems, currentPage, pageSize, maxPages) {
     // calculate total pages
     let totalPages = Math.ceil(totalItems / pageSize);
     // ensure current page isn't out of range
@@ -155,5 +162,5 @@ const paginate = function (totalItems, currentPage, pageSize, maxPages) {
     };
     // return object with all pager properties required by the view
     return pager;
-};
+}
 exports.paginate = paginate;

@@ -1,4 +1,6 @@
-import { PageTitleNotificationInterface, PagerInterface } from "./interface";
+import { PageTitleNotificationInterface, PagerInterface } from './interface';
+export { default as storage } from './storage';
+export { default as storageBridge } from './storageBridge';
 export declare const PageTitleNotification: PageTitleNotificationInterface;
 /**
  *
@@ -19,21 +21,21 @@ export declare function findIndexInArrayObject(key: string, val: any, params: Ar
  * @param {string} [separator]
  * @returns
  */
-export declare const separatorBeforeCapitalLetters: (string: string, separator: string) => string;
+export declare function separatorBeforeCapitalLetters(string: string, separator: string): string;
 /**
  *
  * @param string
  * @param separator
  * @returns
  */
-export declare const capitalLettersAndRemoveSeperator: (string: string, separator: string) => string;
+export declare function capitalLettersAndRemoveSeperator(string: string, separator: string): string;
 /**
  *
  * @param number
  * @param targetLength
  * @returns
  */
-export declare const leftPad: (number: number, targetLength: number) => string;
+export declare function leftPad(number: number, targetLength: number): string;
 /**
  *
  * @param totalItems
@@ -42,4 +44,4 @@ export declare const leftPad: (number: number, targetLength: number) => string;
  * @param maxPages
  * @returns
  */
-export declare const paginate: (totalItems: number, currentPage: number, pageSize: number, maxPages: number) => PagerInterface;
+export declare function paginate(totalItems: number, currentPage: number, pageSize: number, maxPages: number): PagerInterface;

@@ -19,3 +19,7 @@ export type PagerInterface = {
     endIndex: number,
     pages: number[]
 }
+
+export type StorageInterface = {
+    prefix: string
+}

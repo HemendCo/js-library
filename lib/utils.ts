@@ -1,4 +1,7 @@
-import { PageTitleNotificationInterface,  PagerInterface } from "./interface";
+import { PageTitleNotificationInterface,  PagerInterface } from './interface';
+
+export {default as storage} from './storage';
+export {default as storageBridge} from './storageBridge';
 
 export const PageTitleNotification: PageTitleNotificationInterface = {
     vars: {
@@ -62,7 +65,7 @@ export function findIndexInArrayObject(key: string, val: any, params: Array<any>
  * @param {string} [separator] 
  * @returns 
  */
-export const separatorBeforeCapitalLetters = function (string: string, separator: string) : string {
+export function separatorBeforeCapitalLetters(string: string, separator: string) : string {
     separator = separator ?? ' ';
     string = string.replace(/([a-z])([A-Z])/g, '$1'+separator+'$2');
     string = string.replace(/([A-Z])([A-Z][a-z])/g, '$1'+separator+'$2')
@@ -75,7 +78,7 @@ export const separatorBeforeCapitalLetters = function (string: string, separator
  * @param separator 
  * @returns 
  */
-export const capitalLettersAndRemoveSeperator = function (string: string, separator: string) : string {
+export function capitalLettersAndRemoveSeperator(string: string, separator: string) : string {
     separator = separator ?? ' ';
     return string.replace(new RegExp('(^|'+separator+').','g'), s => s.slice(-1).toUpperCase());
 }
@@ -86,14 +89,13 @@ export const capitalLettersAndRemoveSeperator = function (string: string, separa
  * @param targetLength 
  * @returns 
  */
-export const leftPad = function (number: number, targetLength: number) : string {
+export function leftPad(number: number, targetLength: number) : string {
     let output = number + '';
     while (output.length < targetLength) {
         output = '0' + output;
     }
     return output;
 }
-
 
 /**
  * 
@@ -103,7 +105,7 @@ export const leftPad = function (number: number, targetLength: number) : string 
  * @param maxPages 
  * @returns 
  */
-export const paginate = function(totalItems: number, currentPage: number, pageSize: number, maxPages: number) : PagerInterface {
+export function paginate(totalItems: number, currentPage: number, pageSize: number, maxPages: number) : PagerInterface {
     // calculate total pages
     let totalPages = Math.ceil(totalItems / pageSize);
 

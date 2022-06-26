@@ -17,3 +17,6 @@ export declare type PagerInterface = {
     endIndex: number;
     pages: number[];
 };
+export declare type StorageInterface = {
+    prefix: string;
+};
