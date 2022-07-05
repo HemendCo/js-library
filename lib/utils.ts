@@ -43,7 +43,11 @@ export const PageTitleNotification: PageTitleNotificationInterface = {
         }
     }
 }
-  
+
+export function capitalizeFirstLetter(str: string) {
+    return str.replace(/^./, str[0].toUpperCase());
+}
+
 /**
  * 
  * @param {Array<string>} arr 

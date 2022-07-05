@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.paginate = exports.leftPad = exports.capitalLettersAndRemoveSeperator = exports.separatorBeforeCapitalLetters = exports.findIndexInArrayObject = exports.removeDuplicatesSafe = exports.PageTitleNotification = exports.extend = exports.storageBridge = exports.storage = void 0;
+exports.paginate = exports.leftPad = exports.capitalLettersAndRemoveSeperator = exports.separatorBeforeCapitalLetters = exports.findIndexInArrayObject = exports.removeDuplicatesSafe = exports.capitalizeFirstLetter = exports.PageTitleNotification = exports.extend = exports.storageBridge = exports.storage = void 0;
 var storage_1 = require("./storage");
 Object.defineProperty(exports, "storage", { enumerable: true, get: function () { return __importDefault(storage_1).default; } });
 var storageBridge_1 = require("./storageBridge");
@@ -45,6 +45,10 @@ exports.PageTitleNotification = {
         }
     }
 };
+function capitalizeFirstLetter(str) {
+    return str.replace(/^./, str[0].toUpperCase());
+}
+exports.capitalizeFirstLetter = capitalizeFirstLetter;
 /**
  *
  * @param {Array<string>} arr

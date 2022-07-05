@@ -7,6 +7,7 @@ export declare function extend(...args: {
     [key: string]: any;
 };
 export declare const PageTitleNotification: PageTitleNotificationInterface;
+export declare function capitalizeFirstLetter(str: string): string;
 /**
  *
  * @param {Array<string>} arr
