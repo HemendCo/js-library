@@ -1,6 +1,11 @@
 import { PageTitleNotificationInterface, PagerInterface } from './interface';
 export { default as storage } from './storage';
 export { default as storageBridge } from './storageBridge';
+export declare function extend(...args: {
+    [key: string]: any;
+}[]): {
+    [key: string]: any;
+};
 export declare const PageTitleNotification: PageTitleNotificationInterface;
 /**
  *

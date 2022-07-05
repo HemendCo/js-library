@@ -1,7 +1,7 @@
 import { StorageInterface } from './interface';
 
 const storage = (options: StorageInterface) => {
-  let prefix = options.prefix + '.';
+  const prefix = options.prefix + '.';
 
   let ls = {
     getAll: () => {
@@ -41,14 +41,20 @@ const storage = (options: StorageInterface) => {
       }
 
       localStorage.setItem(prefix + key, value);
+
+      return ls;
     },
 
     remove: (key: string) => {
       localStorage.removeItem(prefix + key);
+
+      return ls;
     },
 
     clear: () => {
       localStorage.removeItem(prefix);
+
+      return ls;
     }
   }
 

@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const storage = (options) => {
-    let prefix = options.prefix + '.';
+    const prefix = options.prefix + '.';
     let ls = {
         getAll: () => {
             let data = {};
@@ -32,12 +32,15 @@ const storage = (options) => {
                 value = JSON.stringify(value);
             }
             localStorage.setItem(prefix + key, value);
+            return ls;
         },
         remove: (key) => {
             localStorage.removeItem(prefix + key);
+            return ls;
         },
         clear: () => {
             localStorage.removeItem(prefix);
+            return ls;
         }
     };
     return ls;

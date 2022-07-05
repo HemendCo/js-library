@@ -3,6 +3,24 @@ import { PageTitleNotificationInterface,  PagerInterface } from './interface';
 export {default as storage} from './storage';
 export {default as storageBridge} from './storageBridge';
 
+export function extend(...args: {[key: string]: any}[]) {
+    let o: {[key: string]: any} = {};
+
+    for (let i = 0; i < args.length; i++) {
+        // Uncomment to skip args that are not objects (to prevent errors)
+        // if (args[i].constructor !== Object) continue;
+        for (let k in args[i]) {
+            if (args[i].hasOwnProperty(k)) {
+                o[k] = args[i][k].constructor === Object
+                    ? extend(o[k] || {}, args[i][k])
+                    : args[i][k];
+            }
+        }
+    }
+
+    return o;
+}
+
 export const PageTitleNotification: PageTitleNotificationInterface = {
     vars: {
         originalTitle : typeof document !== 'undefined' ?  document?.title : '',
