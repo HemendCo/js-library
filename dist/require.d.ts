@@ -19,10 +19,10 @@ declare global {
         lcfirst(): string;
         ucwords(): string;
         sprintf(): string;
-        trim(): string;
-        lrtrim(): string;
-        rtrim(): string;
-        ltrim(): string;
+        trim(s: string | undefined): string;
+        lrtrim(s: string | undefined): string;
+        rtrim(s: string | undefined): string;
+        ltrim(s: string | undefined): string;
     }
     interface Number {
         numberFormat(decimals: number, dec_point: string, thousands_sep: string): string;
