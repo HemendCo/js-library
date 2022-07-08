@@ -14,5 +14,3 @@ describe('Utils test', () => {
         assert.deepEqual(res, ['aaa', 'p', '1']);
     });
 });
-
-alert(33)
