@@ -207,6 +207,7 @@ if (!String.prototype.sprintf) {
 
 if (!Object.prototype.clone) {
 	Object.defineProperty(Object.prototype, 'clone', {
+    writable: true,
     value: function(this: {[key: string]: any}): {[key: string]: any}|Array<any> {
       let copy: {[key: string]: any}|Array<any>;
       if (this instanceof Array) {
@@ -222,6 +223,7 @@ if (!Object.prototype.clone) {
 
 if (!Array.prototype.clone) {
 	Object.defineProperty(Array.prototype, 'clone', {
+    writable: true,
     value: function(this: Array<any>) {
 			return [...this];
 		}
