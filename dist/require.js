@@ -173,6 +173,7 @@ if (!Array.prototype.clone) {
 }
 if (!String.prototype.trim) {
     Object.defineProperty(String.prototype, 'trim', {
+        writable: true,
         value: function (s) {
             return this.lrtrim(s);
         }

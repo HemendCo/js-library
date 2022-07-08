@@ -232,6 +232,7 @@ if (!Array.prototype.clone) {
 
 if (!String.prototype.trim) {
 	Object.defineProperty(String.prototype, 'trim', {
+    writable: true,
     value: function(s: string|undefined) {
       return this.lrtrim(s);
     }
