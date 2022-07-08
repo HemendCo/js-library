@@ -1,3 +1,4 @@
+import './require';
 import { PageTitleNotificationInterface, PagerInterface } from './interface';
 export { default as countDownTimer } from './countDownTimer';
 export { default as storage } from './storage';
@@ -8,13 +9,6 @@ export declare function extend(...args: {
     [key: string]: any;
 };
 export declare const PageTitleNotification: PageTitleNotificationInterface;
-export declare function capitalizeFirstLetter(str: string): string;
-/**
- *
- * @param {Array<string>} arr
- * @returns
- */
-export declare function removeDuplicatesSafe(arr: Array<string>): Array<string>;
 /**
  *
  * @param {string} key
@@ -43,6 +37,9 @@ export declare function capitalLettersAndRemoveSeperator(string: string, separat
  * @returns
  */
 export declare function leftPad(number: number, targetLength: number): string;
+export declare const randomInteger: (min: number, max: number) => number;
+export declare const randomNumber: (min: number, max: number) => number;
+export declare const randomBetween: (min: number, max: number, interval: number) => number;
 /**
  *
  * @param totalItems

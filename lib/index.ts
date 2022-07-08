@@ -1,69 +1,49 @@
+import './require';
 import { PageTitleNotificationInterface,  PagerInterface } from './interface';
 
-export {default as countDownTimer} from './countDownTimer';
-export {default as storage} from './storage';
-export {default as storageBridge} from './storageBridge';
+export { default as countDownTimer } from './countDownTimer';
+export { default as storage } from './storage';
+export { default as storageBridge } from './storageBridge';
 
 export function extend(...args: {[key: string]: any}[]) {
-    let o: {[key: string]: any} = {};
+  let o: {[key: string]: any} = {};
 
-    for (let i = 0; i < args.length; i++) {
-        // Uncomment to skip args that are not objects (to prevent errors)
-        // if (args[i].constructor !== Object) continue;
-        for (let k in args[i]) {
-            if (args[i].hasOwnProperty(k)) {
-                o[k] = args[i][k].constructor === Object
-                    ? extend(o[k] || {}, args[i][k])
-                    : args[i][k];
-            }
-        }
+  for (let i = 0; i < args.length; i++) {
+    // Uncomment to skip args that are not objects (to prevent errors)
+    // if (args[i].constructor !== Object) continue;
+    for (let k in args[i]) {
+      if (args[i].hasOwnProperty(k)) {
+        o[k] = args[i][k].constructor === Object
+          ? extend(o[k] || {}, args[i][k])
+          : args[i][k];
+      }
     }
+  }
 
-    return o;
+  return o;
 }
 
 export const PageTitleNotification: PageTitleNotificationInterface = {
-    vars: {
-        originalTitle : typeof document !== 'undefined' ?  document?.title : '',
-        interval : null
-    },
-    On: function(notification: string, intervalSpeed: number) {
-        if(typeof document !== 'undefined') {
-            this.vars.interval = setInterval(
-            () => {
-                document!.title = (this.vars.originalTitle == document.title) ? notification : this.vars.originalTitle;
-            }, (intervalSpeed) ? intervalSpeed : 1000);
-        }
-    },
-    Off: function() {
-        if(this.vars.interval) {
-            clearInterval(this.vars.interval);
-        }
-        if(typeof document !== 'undefined') {
-            document!.title = this.vars.originalTitle;
-        }
+  vars: {
+    originalTitle : typeof document !== 'undefined' ?  document?.title : '',
+    interval : null
+  },
+  On: function(notification: string, intervalSpeed: number) {
+    if(typeof document !== 'undefined') {
+      this.vars.interval = setInterval(
+      () => {
+        document!.title = (this.vars.originalTitle == document.title) ? notification : this.vars.originalTitle;
+      }, (intervalSpeed) ? intervalSpeed : 1000);
     }
-}
-
-export function capitalizeFirstLetter(str: string) {
-    return str.replace(/^./, str[0].toUpperCase());
-}
-
-/**
- * 
- * @param {Array<string>} arr 
- * @returns 
- */
-export function removeDuplicatesSafe(arr: Array<string>) : Array<string> {
-    let seen: {[key: string]: boolean} = {};
-    let ret_arr = [];
-    for (let i = 0; i < arr.length; i++) {
-        if (!(arr[i] in seen)) {
-            ret_arr.push(arr[i]);
-            seen[arr[i]] = true;
-        }
+  },
+  Off: function() {
+    if(this.vars.interval) {
+      clearInterval(this.vars.interval);
     }
-    return ret_arr;
+    if(typeof document !== 'undefined') {
+      document!.title = this.vars.originalTitle;
+    }
+  }
 }
 
 /**
@@ -74,13 +54,13 @@ export function removeDuplicatesSafe(arr: Array<string>) : Array<string> {
  * @returns 
  */
 export function findIndexInArrayObject(key: string, val: any, params: Array<any>) {
-    for(let i in params) {
-        let p = params[i];
-        if(p[key] === val) {
-            return i;
-        }
+  for(let i in params) {
+    let p = params[i];
+    if(p[key] === val) {
+      return i;
     }
-    return undefined;
+  }
+  return undefined;
 }
 
 /**
@@ -89,10 +69,10 @@ export function findIndexInArrayObject(key: string, val: any, params: Array<any>
  * @returns 
  */
 export function separatorBeforeCapitalLetters(string: string, separator: string) : string {
-    separator = separator ?? ' ';
-    string = string.replace(/([a-z])([A-Z])/g, '$1'+separator+'$2');
-    string = string.replace(/([A-Z])([A-Z][a-z])/g, '$1'+separator+'$2')
-    return string;
+  separator = separator ?? ' ';
+  string = string.replace(/([a-z])([A-Z])/g, '$1'+separator+'$2');
+  string = string.replace(/([A-Z])([A-Z][a-z])/g, '$1'+separator+'$2')
+  return string;
 }
 
 /**
@@ -102,8 +82,8 @@ export function separatorBeforeCapitalLetters(string: string, separator: string)
  * @returns 
  */
 export function capitalLettersAndRemoveSeperator(string: string, separator: string) : string {
-    separator = separator ?? ' ';
-    return string.replace(new RegExp('(^|'+separator+').','g'), s => s.slice(-1).toUpperCase());
+  separator = separator ?? ' ';
+  return string.replace(new RegExp('(^|'+separator+').','g'), s => s.slice(-1).toUpperCase());
 }
 
 /**
@@ -113,11 +93,29 @@ export function capitalLettersAndRemoveSeperator(string: string, separator: stri
  * @returns 
  */
 export function leftPad(number: number, targetLength: number) : string {
-    let output = number + '';
-    while (output.length < targetLength) {
-        output = '0' + output;
-    }
-    return output;
+  let output = number + '';
+  while (output.length < targetLength) {
+    output = '0' + output;
+  }
+  return output;
+}
+
+export const randomInteger = function(min: number, max: number) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+export const randomNumber = function(min: number, max: number) {
+  return Math.random() * (max - min) + min;
+}
+
+export const randomBetween = function(min: number, max: number, interval: number) {
+	if (typeof interval === 'undefined') {
+		interval = 1;
+	}
+
+  let r = Math.floor(Math.random() * (max - min + interval) / interval);
+
+	return r * interval + min;
 }
 
 /**
@@ -129,59 +127,59 @@ export function leftPad(number: number, targetLength: number) : string {
  * @returns 
  */
 export function paginate(totalItems: number, currentPage: number, pageSize: number, maxPages: number) : PagerInterface {
-    // calculate total pages
-    let totalPages = Math.ceil(totalItems / pageSize);
+  // calculate total pages
+  let totalPages = Math.ceil(totalItems / pageSize);
 
-    // ensure current page isn't out of range
-    if (currentPage < 1) {
-        currentPage = 1;
-    } else if (currentPage > totalPages) {
-        currentPage = totalPages;
-    }
+  // ensure current page isn't out of range
+  if (currentPage < 1) {
+    currentPage = 1;
+  } else if (currentPage > totalPages) {
+    currentPage = totalPages;
+  }
 
-    let startPage: number, endPage: number;
-    if (totalPages <= maxPages) {
-        // total pages less than max so show all pages
-        startPage = 1;
-        endPage = totalPages;
+  let startPage: number, endPage: number;
+  if (totalPages <= maxPages) {
+    // total pages less than max so show all pages
+    startPage = 1;
+    endPage = totalPages;
+  } else {
+    // total pages more than max so calculate start and end pages
+    let maxPagesBeforeCurrentPage = Math.floor(maxPages / 2);
+    let maxPagesAfterCurrentPage = Math.ceil(maxPages / 2) - 1;
+    if (currentPage <= maxPagesBeforeCurrentPage) {
+      // current page near the start
+      startPage = 1;
+      endPage = maxPages;
+    } else if (currentPage + maxPagesAfterCurrentPage >= totalPages) {
+      // current page near the end
+      startPage = totalPages - maxPages + 1;
+      endPage = totalPages;
     } else {
-        // total pages more than max so calculate start and end pages
-        let maxPagesBeforeCurrentPage = Math.floor(maxPages / 2);
-        let maxPagesAfterCurrentPage = Math.ceil(maxPages / 2) - 1;
-        if (currentPage <= maxPagesBeforeCurrentPage) {
-            // current page near the start
-            startPage = 1;
-            endPage = maxPages;
-        } else if (currentPage + maxPagesAfterCurrentPage >= totalPages) {
-            // current page near the end
-            startPage = totalPages - maxPages + 1;
-            endPage = totalPages;
-        } else {
-            // current page somewhere in the middle
-            startPage = currentPage - maxPagesBeforeCurrentPage;
-            endPage = currentPage + maxPagesAfterCurrentPage;
-        }
+      // current page somewhere in the middle
+      startPage = currentPage - maxPagesBeforeCurrentPage;
+      endPage = currentPage + maxPagesAfterCurrentPage;
     }
+  }
 
-    // calculate start and end item indexes
-    let startIndex = (currentPage - 1) * pageSize;
-    let endIndex = Math.min(startIndex + pageSize - 1, totalItems - 1);
+  // calculate start and end item indexes
+  let startIndex = (currentPage - 1) * pageSize;
+  let endIndex = Math.min(startIndex + pageSize - 1, totalItems - 1);
 
-    // create an array of pages to ng-repeat in the pager control
-    let pages = Array.from(Array((endPage + 1) - startPage).keys()).map(i => startPage + i);
+  // create an array of pages to ng-repeat in the pager control
+  let pages = Array.from(Array((endPage + 1) - startPage).keys()).map(i => startPage + i);
 
-    const pager: PagerInterface = {
-        totalItems: totalItems,
-        currentPage: currentPage,
-        pageSize: pageSize,
-        totalPages: totalPages,
-        startPage: startPage,
-        endPage: endPage,
-        startIndex: startIndex,
-        endIndex: endIndex,
-        pages: pages
-    };
+  const pager: PagerInterface = {
+    totalItems: totalItems,
+    currentPage: currentPage,
+    pageSize: pageSize,
+    totalPages: totalPages,
+    startPage: startPage,
+    endPage: endPage,
+    startIndex: startIndex,
+    endIndex: endIndex,
+    pages: pages
+  };
 
-    // return object with all pager properties required by the view
-    return pager;
+  // return object with all pager properties required by the view
+  return pager;
 }

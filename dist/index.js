@@ -3,7 +3,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.paginate = exports.leftPad = exports.capitalLettersAndRemoveSeperator = exports.separatorBeforeCapitalLetters = exports.findIndexInArrayObject = exports.removeDuplicatesSafe = exports.capitalizeFirstLetter = exports.PageTitleNotification = exports.extend = exports.storageBridge = exports.storage = exports.countDownTimer = void 0;
+exports.paginate = exports.randomBetween = exports.randomNumber = exports.randomInteger = exports.leftPad = exports.capitalLettersAndRemoveSeperator = exports.separatorBeforeCapitalLetters = exports.findIndexInArrayObject = exports.PageTitleNotification = exports.extend = exports.storageBridge = exports.storage = exports.countDownTimer = void 0;
+require("./require");
 var countDownTimer_1 = require("./countDownTimer");
 Object.defineProperty(exports, "countDownTimer", { enumerable: true, get: function () { return __importDefault(countDownTimer_1).default; } });
 var storage_1 = require("./storage");
@@ -47,27 +48,6 @@ exports.PageTitleNotification = {
         }
     }
 };
-function capitalizeFirstLetter(str) {
-    return str.replace(/^./, str[0].toUpperCase());
-}
-exports.capitalizeFirstLetter = capitalizeFirstLetter;
-/**
- *
- * @param {Array<string>} arr
- * @returns
- */
-function removeDuplicatesSafe(arr) {
-    let seen = {};
-    let ret_arr = [];
-    for (let i = 0; i < arr.length; i++) {
-        if (!(arr[i] in seen)) {
-            ret_arr.push(arr[i]);
-            seen[arr[i]] = true;
-        }
-    }
-    return ret_arr;
-}
-exports.removeDuplicatesSafe = removeDuplicatesSafe;
 /**
  *
  * @param {string} key
@@ -122,6 +102,22 @@ function leftPad(number, targetLength) {
     return output;
 }
 exports.leftPad = leftPad;
+const randomInteger = function (min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+};
+exports.randomInteger = randomInteger;
+const randomNumber = function (min, max) {
+    return Math.random() * (max - min) + min;
+};
+exports.randomNumber = randomNumber;
+const randomBetween = function (min, max, interval) {
+    if (typeof interval === 'undefined') {
+        interval = 1;
+    }
+    let r = Math.floor(Math.random() * (max - min + interval) / interval);
+    return r * interval + min;
+};
+exports.randomBetween = randomBetween;
 /**
  *
  * @param totalItems
