@@ -40,6 +40,7 @@ export declare function leftPad(number: number, targetLength: number): string;
 export declare const randomInteger: (min: number, max: number) => number;
 export declare const randomNumber: (min: number, max: number) => number;
 export declare const randomBetween: (min: number, max: number, interval: number) => number;
+export declare const sprintf: (str: string) => string;
 /**
  *
  * @param totalItems

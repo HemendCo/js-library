@@ -118,6 +118,18 @@ export const randomBetween = function(min: number, max: number, interval: number
 	return r * interval + min;
 }
 
+export const sprintf = function(str: string) {
+  let args: {[key: number]: number|string} = arguments;
+  delete args[0];
+  let params = [];
+  for (let i in args) {
+    params.push(args[i])
+  }
+
+  // @ts-ignore
+  return String.prototype.sprintf.apply(str, params);
+}
+
 /**
  * 
  * @param totalItems 

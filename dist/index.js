@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.paginate = exports.randomBetween = exports.randomNumber = exports.randomInteger = exports.leftPad = exports.capitalLettersAndRemoveSeperator = exports.separatorBeforeCapitalLetters = exports.findIndexInArrayObject = exports.PageTitleNotification = exports.extend = exports.storageBridge = exports.storage = exports.countDownTimer = void 0;
+exports.paginate = exports.sprintf = exports.randomBetween = exports.randomNumber = exports.randomInteger = exports.leftPad = exports.capitalLettersAndRemoveSeperator = exports.separatorBeforeCapitalLetters = exports.findIndexInArrayObject = exports.PageTitleNotification = exports.extend = exports.storageBridge = exports.storage = exports.countDownTimer = void 0;
 require("./require");
 var countDownTimer_1 = require("./countDownTimer");
 Object.defineProperty(exports, "countDownTimer", { enumerable: true, get: function () { return __importDefault(countDownTimer_1).default; } });
@@ -118,6 +118,17 @@ const randomBetween = function (min, max, interval) {
     return r * interval + min;
 };
 exports.randomBetween = randomBetween;
+const sprintf = function (str) {
+    let args = arguments;
+    delete args[0];
+    let params = [];
+    for (let i in args) {
+        params.push(args[i]);
+    }
+    // @ts-ignore
+    return String.prototype.sprintf.apply(str, params);
+};
+exports.sprintf = sprintf;
 /**
  *
  * @param totalItems

@@ -14,6 +14,27 @@ if (!Array.prototype.contains) {
         }
     });
 }
+if (!Array.prototype.includesAny) {
+    Object.defineProperty(Array.prototype, 'includesAny', {
+        value: function (elm, shouldAll) {
+            let counter = 0;
+            for (let i = 0; i < elm.length; i++) {
+                ;
+                if (this.includes(elm[i])) {
+                    counter++;
+                }
+            }
+            return shouldAll ? counter === elm.length : counter > 0;
+        }
+    });
+}
+if (!Array.prototype.containsAny) {
+    Object.defineProperty(Array.prototype, 'containsAny', {
+        value: function (elm, shouldAll) {
+            return this.includesAny(elm, shouldAll);
+        }
+    });
+}
 if (!Array.prototype.unique) {
     Object.defineProperty(Array.prototype, 'unique', {
         value: function () {

@@ -6,6 +6,8 @@ declare global {
     interface Array<T> {
         includes(elem: T): boolean;
         contains(elem: T): boolean;
+        includesAny(elem: Array<T>): boolean;
+        containsAny(elem: Array<T>): boolean;
         remove(elem: T): T;
         shuffle(): Array<T>;
         unique(): Array<T>;
