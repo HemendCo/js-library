@@ -1,4 +1,3 @@
-import './require';
 import { PageTitleNotificationInterface, PagerInterface } from './interface';
 export { default as countDownTimer } from './countDownTimer';
 export { default as storage } from './storage';

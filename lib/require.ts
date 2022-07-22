@@ -23,7 +23,7 @@ declare global {
     ucfirst(): string;
     lcfirst(): string;
     ucwords(): string;
-    sprintf(): string;
+    sprintf(...args: any[]): string;
     trim(s: string|undefined): string;
     lrtrim(s: string|undefined): string;
     rtrim(s: string|undefined): string;

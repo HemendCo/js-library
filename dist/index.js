@@ -1,17 +1,7 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.paginate = exports.sprintf = exports.randomBetween = exports.randomNumber = exports.randomInteger = exports.leftPad = exports.capitalLettersAndRemoveSeperator = exports.separatorBeforeCapitalLetters = exports.findIndexInArrayObject = exports.PageTitleNotification = exports.extend = exports.storageBridge = exports.storage = exports.countDownTimer = void 0;
-require("./require");
-var countDownTimer_1 = require("./countDownTimer");
-Object.defineProperty(exports, "countDownTimer", { enumerable: true, get: function () { return __importDefault(countDownTimer_1).default; } });
-var storage_1 = require("./storage");
-Object.defineProperty(exports, "storage", { enumerable: true, get: function () { return __importDefault(storage_1).default; } });
-var storageBridge_1 = require("./storageBridge");
-Object.defineProperty(exports, "storageBridge", { enumerable: true, get: function () { return __importDefault(storageBridge_1).default; } });
-function extend(...args) {
+export { default as countDownTimer } from './countDownTimer';
+export { default as storage } from './storage';
+export { default as storageBridge } from './storageBridge';
+export function extend(...args) {
     let o = {};
     for (let i = 0; i < args.length; i++) {
         // Uncomment to skip args that are not objects (to prevent errors)
@@ -26,8 +16,7 @@ function extend(...args) {
     }
     return o;
 }
-exports.extend = extend;
-exports.PageTitleNotification = {
+export const PageTitleNotification = {
     vars: {
         originalTitle: typeof document !== 'undefined' ? document === null || document === void 0 ? void 0 : document.title : '',
         interval: null
@@ -55,7 +44,7 @@ exports.PageTitleNotification = {
  * @param {Array<any>} params
  * @returns
  */
-function findIndexInArrayObject(key, val, params) {
+export function findIndexInArrayObject(key, val, params) {
     for (let i in params) {
         let p = params[i];
         if (p[key] === val) {
@@ -64,61 +53,54 @@ function findIndexInArrayObject(key, val, params) {
     }
     return undefined;
 }
-exports.findIndexInArrayObject = findIndexInArrayObject;
 /**
  * @param {string} string
  * @param {string} [separator]
  * @returns
  */
-function separatorBeforeCapitalLetters(string, separator) {
+export function separatorBeforeCapitalLetters(string, separator) {
     separator = separator !== null && separator !== void 0 ? separator : ' ';
     string = string.replace(/([a-z])([A-Z])/g, '$1' + separator + '$2');
     string = string.replace(/([A-Z])([A-Z][a-z])/g, '$1' + separator + '$2');
     return string;
 }
-exports.separatorBeforeCapitalLetters = separatorBeforeCapitalLetters;
 /**
  *
  * @param string
  * @param separator
  * @returns
  */
-function capitalLettersAndRemoveSeperator(string, separator) {
+export function capitalLettersAndRemoveSeperator(string, separator) {
     separator = separator !== null && separator !== void 0 ? separator : ' ';
     return string.replace(new RegExp('(^|' + separator + ').', 'g'), s => s.slice(-1).toUpperCase());
 }
-exports.capitalLettersAndRemoveSeperator = capitalLettersAndRemoveSeperator;
 /**
  *
  * @param number
  * @param targetLength
  * @returns
  */
-function leftPad(number, targetLength) {
+export function leftPad(number, targetLength) {
     let output = number + '';
     while (output.length < targetLength) {
         output = '0' + output;
     }
     return output;
 }
-exports.leftPad = leftPad;
-const randomInteger = function (min, max) {
+export const randomInteger = function (min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 };
-exports.randomInteger = randomInteger;
-const randomNumber = function (min, max) {
+export const randomNumber = function (min, max) {
     return Math.random() * (max - min) + min;
 };
-exports.randomNumber = randomNumber;
-const randomBetween = function (min, max, interval) {
+export const randomBetween = function (min, max, interval) {
     if (typeof interval === 'undefined') {
         interval = 1;
     }
     let r = Math.floor(Math.random() * (max - min + interval) / interval);
     return r * interval + min;
 };
-exports.randomBetween = randomBetween;
-const sprintf = function (str) {
+export const sprintf = function (str) {
     let args = arguments;
     delete args[0];
     let params = [];
@@ -128,7 +110,6 @@ const sprintf = function (str) {
     // @ts-ignore
     return String.prototype.sprintf.apply(str, params);
 };
-exports.sprintf = sprintf;
 /**
  *
  * @param totalItems
@@ -137,7 +118,7 @@ exports.sprintf = sprintf;
  * @param maxPages
  * @returns
  */
-function paginate(totalItems, currentPage, pageSize, maxPages) {
+export function paginate(totalItems, currentPage, pageSize, maxPages) {
     // calculate total pages
     let totalPages = Math.ceil(totalItems / pageSize);
     // ensure current page isn't out of range
@@ -192,4 +173,3 @@ function paginate(totalItems, currentPage, pageSize, maxPages) {
     // return object with all pager properties required by the view
     return pager;
 }
-exports.paginate = paginate;

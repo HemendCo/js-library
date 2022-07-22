@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 const storage = (options) => {
     const prefix = options.prefix + '.';
     let ls = {
@@ -45,4 +43,4 @@ const storage = (options) => {
     };
     return ls;
 };
-exports.default = storage;
+export default storage;

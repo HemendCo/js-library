@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 function countDownTimer(duration, granularity) {
     this.duration = duration;
     this.granularity = granularity || 1000;
@@ -50,4 +48,4 @@ countDownTimer.parse = function (seconds) {
         'seconds': (seconds % 60) | 0
     };
 };
-exports.default = countDownTimer;
+export default countDownTimer;

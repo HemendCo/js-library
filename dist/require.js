@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 if (!Array.prototype.includes) {
     Object.defineProperty(Array.prototype, 'includes', {
         value: function (elm) {
@@ -227,3 +225,4 @@ if (!String.prototype.rtrim) {
         }
     });
 }
+export {};

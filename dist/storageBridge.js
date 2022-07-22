@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 const storageBridge = (() => {
     /*
       - Storing messages in localStorage.
@@ -98,4 +96,4 @@ const storageBridge = (() => {
     }
     return api;
 })();
-exports.default = storageBridge;
+export default storageBridge;
