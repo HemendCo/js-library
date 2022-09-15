@@ -183,7 +183,7 @@ if (!Number.prototype.isNumeric) {
 if (!Number.prototype.formatBytes) {
   Object.defineProperty(Number.prototype, 'formatBytes', {
     value: function(this: number, decimals: number = 2): string {
-      return formatBytes(this, decimals || 2);
+      return formatBytes(this, decimals);
     }
   });
 }
