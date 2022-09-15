@@ -29,6 +29,6 @@ declare global {
     interface Number {
         numberFormat(decimals: number, dec_point: string, thousands_sep: string): string;
         isNumeric(): boolean;
-        formatBytes(size: number): string;
+        formatBytes(decimals?: number): string;
     }
 }

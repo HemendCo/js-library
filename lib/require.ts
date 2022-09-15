@@ -35,7 +35,7 @@ declare global {
   interface Number {
     numberFormat(decimals: number, dec_point: string, thousands_sep: string): string;
     isNumeric(): boolean;
-    formatBytes(size: number): string;
+    formatBytes(decimals?: number): string;
   }
 }
 
@@ -182,8 +182,8 @@ if (!Number.prototype.isNumeric) {
 
 if (!Number.prototype.formatBytes) {
   Object.defineProperty(Number.prototype, 'formatBytes', {
-    value: function(this: number): string {
-      return formatBytes(this, 2);
+    value: function(this: number, decimals: number = 2): string {
+      return formatBytes(this, decimals || 2);
     }
   });
 }
