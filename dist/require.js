@@ -124,7 +124,7 @@ if (!Number.prototype.isNumeric) {
 if (!Number.prototype.formatBytes) {
     Object.defineProperty(Number.prototype, 'formatBytes', {
         value: function (decimals = 2) {
-            return formatBytes(this, decimals || 2);
+            return formatBytes(this, decimals);
         }
     });
 }

@@ -123,11 +123,13 @@ export var SizeUnits;
     SizeUnits["YB"] = "YB";
 })(SizeUnits || (SizeUnits = {}));
 export const formatBytes = function (bytes, decimals = 2) {
-    const SIZES = ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
-    let i = 0, r = bytes;
-    for (let b = 1024; r > b; i++)
-        r /= b;
-    return `${parseFloat(r.toFixed(decimals))} ${SIZES[i]}`;
+    if (bytes == 0)
+        return '0 B';
+    decimals = decimals === undefined ? 2 : decimals;
+    let k = 1024; //Or 1 kilo = 1000
+    let sizes = ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+    let i = Math.floor(Math.log(bytes) / Math.log(k));
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(decimals)) + ' ' + sizes[i];
 };
 /**
  *
