@@ -1,3 +1,4 @@
+import { formatBytes } from './index';
 if (!Array.prototype.includes) {
     Object.defineProperty(Array.prototype, 'includes', {
         value: function (elm) {
@@ -120,6 +121,13 @@ if (!Number.prototype.isNumeric) {
         }
     });
 }
+if (!Number.prototype.formatBytes) {
+    Object.defineProperty(Number.prototype, 'formatBytes', {
+        value: function () {
+            return formatBytes(this, 2);
+        }
+    });
+}
 if (!String.prototype.isNumeric) {
     Object.defineProperty(String.prototype, 'isNumeric', {
         value: function () {
@@ -225,4 +233,3 @@ if (!String.prototype.rtrim) {
         }
     });
 }
-export {};

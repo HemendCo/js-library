@@ -1,5 +1,7 @@
 export {};
 
+import { formatBytes } from './index'
+
 declare global {
   interface Object {
     clone(): Object;
@@ -33,6 +35,7 @@ declare global {
   interface Number {
     numberFormat(decimals: number, dec_point: string, thousands_sep: string): string;
     isNumeric(): boolean;
+    formatBytes(size: number): string;
   }
 }
 
@@ -173,6 +176,14 @@ if (!Number.prototype.isNumeric) {
   Object.defineProperty(Number.prototype, 'isNumeric', {
     value: function(this: number): boolean {
       return true;
+    }
+  });
+}
+
+if (!Number.prototype.formatBytes) {
+  Object.defineProperty(Number.prototype, 'formatBytes', {
+    value: function(this: number): string {
+      return formatBytes(this, 2);
     }
   });
 }

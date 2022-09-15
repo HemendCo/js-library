@@ -129,6 +129,25 @@ export const sprintf = function(str: string) {
   return String.prototype.sprintf.apply(str, params);
 }
 
+export enum SizeUnits {
+  Bytes = 'Bytes',
+  KB = 'KB',
+  MB = 'MB',
+  GB = 'GB',
+  TB = 'TB',
+  PB = 'PB',
+  EB = 'EB',
+  ZB = 'ZB',
+  YB = 'YB'
+}
+
+export const formatBytes = function(bytes: number, decimals = 2) {
+  const SIZES = ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+  let i = 0, r = bytes;
+  for(let b = 1024; r > b; i++) r /= b;
+  return `${parseFloat(r.toFixed(decimals))} ${SIZES[i]}`;
+}
+
 /**
  * 
  * @param totalItems 

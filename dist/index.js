@@ -110,6 +110,25 @@ export const sprintf = function (str) {
     // @ts-ignore
     return String.prototype.sprintf.apply(str, params);
 };
+export var SizeUnits;
+(function (SizeUnits) {
+    SizeUnits["Bytes"] = "Bytes";
+    SizeUnits["KB"] = "KB";
+    SizeUnits["MB"] = "MB";
+    SizeUnits["GB"] = "GB";
+    SizeUnits["TB"] = "TB";
+    SizeUnits["PB"] = "PB";
+    SizeUnits["EB"] = "EB";
+    SizeUnits["ZB"] = "ZB";
+    SizeUnits["YB"] = "YB";
+})(SizeUnits || (SizeUnits = {}));
+export const formatBytes = function (bytes, decimals = 2) {
+    const SIZES = ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+    let i = 0, r = bytes;
+    for (let b = 1024; r > b; i++)
+        r /= b;
+    return `${parseFloat(r.toFixed(decimals))} ${SIZES[i]}`;
+};
 /**
  *
  * @param totalItems
