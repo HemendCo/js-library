@@ -19,7 +19,7 @@ yarn add @hemend/js-library
 
 [MIT License](./LICENSE)
 
-Copyright (c) Hemend Company
+Copyright (c) Hemend
 
 <!-- Badges -->
 [npm-version-src]: https://img.shields.io/npm/v/@hemend/js-library/latest.svg?style=flat&colorA=18181B&colorB=28CF8D
