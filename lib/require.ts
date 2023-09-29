@@ -20,20 +20,20 @@ declare global {
 
   interface String {
     toEnNumbers(): string;
-    numberFormat(decimals: number, dec_point: string, thousands_sep: string): string;
+    numberFormat(decimals: number, dec_point?: string, thousands_sep?: string): string;
     isNumeric(): boolean;
     ucfirst(): string;
     lcfirst(): string;
     ucwords(): string;
     sprintf(...args: any[]): string;
-    trim(s: string|undefined): string;
-    lrtrim(s: string|undefined): string;
-    rtrim(s: string|undefined): string;
-    ltrim(s: string|undefined): string;
+    trim(s?: string|undefined): string;
+    lrtrim(s?: string|undefined): string;
+    rtrim(s?: string|undefined): string;
+    ltrim(s?: string|undefined): string;
   }
 
   interface Number {
-    numberFormat(decimals: number, dec_point: string, thousands_sep: string): string;
+    numberFormat(decimals: number, dec_point?: string, thousands_sep?: string): string;
     isNumeric(): boolean;
     formatBytes(decimals?: number): string;
   }
@@ -152,7 +152,7 @@ if (!String.prototype.toEnNumbers) {
 
 if (!Number.prototype.numberFormat) {
   Object.defineProperty(Number.prototype, 'numberFormat', {
-    value: function(this: number, decimals: number, dec_point: string, thousands_sep: string): string {
+    value: function(this: number, decimals: number, dec_point?: string, thousands_sep?: string): string {
       dec_point = typeof dec_point !== 'undefined' ? dec_point : '.';
       thousands_sep = typeof thousands_sep !== 'undefined' ? thousands_sep : ',';
   
@@ -166,7 +166,7 @@ if (!Number.prototype.numberFormat) {
 
 if (!String.prototype.numberFormat) {
   Object.defineProperty(String.prototype, 'numberFormat', {
-    value: function(this: string, decimals: number, dec_point: string, thousands_sep: string): string {
+    value: function(this: string, decimals: number, dec_point?: string, thousands_sep?: string): string {
       return parseFloat(this).numberFormat(decimals, dec_point, thousands_sep);
     }
   });
@@ -269,7 +269,7 @@ if (!Array.prototype.clone) {
 if (!String.prototype.trim) {
   Object.defineProperty(String.prototype, 'trim', {
     writable: true,
-    value: function(s: string|undefined) {
+    value: function(s?: string|undefined) {
       return this.lrtrim(s);
     }
   });
@@ -277,7 +277,7 @@ if (!String.prototype.trim) {
 
 if (!String.prototype.lrtrim) {
   Object.defineProperty(String.prototype, 'lrtrim', {
-    value: function(s: string|undefined) {
+    value: function(s?: string|undefined) {
       return this.ltrim(s).rtrim(s);
     }
   });
@@ -285,8 +285,8 @@ if (!String.prototype.lrtrim) {
 
 if (!String.prototype.ltrim) {
   Object.defineProperty(String.prototype, 'ltrim', {
-    value: function(s: string) {
-      if (s == undefined) {
+    value: function(s?: string) {
+      if (s == undefined || s == null) {
         s = '\\s';
       }
       return this.replace(new RegExp('^[' + s + ']*'), '');
@@ -296,8 +296,8 @@ if (!String.prototype.ltrim) {
 
 if (!String.prototype.rtrim) {
   Object.defineProperty(String.prototype, 'rtrim', {
-    value: function(s: string|undefined) {
-      if (s == undefined) {
+    value: function(s?: string|undefined) {
+      if (s == undefined || s == null) {
         s = '\\s';
       }
       return this.replace(new RegExp('[' + s + ']*$'), '');
