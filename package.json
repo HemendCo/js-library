@@ -1,5 +1,5 @@
 {
-  "name": "hemend-js-library",
+  "name": "@hemend/js-library",
   "version": "1.0.8",
   "description": "Hemend js library",
   "main": "dist/index.js",
@@ -23,5 +23,12 @@
     "chai": "^4.3.6",
     "mocha": "^9.2.2",
     "typescript": "^4.6.3"
+  },
+  "bugs": {
+    "url": "https://github.com/HemendCo/js-library/issues"
+  },
+  "directories": {
+    "lib": "lib",
+    "test": "test"
   }
 }
