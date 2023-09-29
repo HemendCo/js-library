@@ -9,6 +9,9 @@
 Add `@hemend/js-library` dependency to your project
 
 ```bash
+# Using npm
+npm add --save @hemend/js-library
+
 # Using pnpm
 pnpm add --save @hemend/js-library
 
