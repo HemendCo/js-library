@@ -52,6 +52,7 @@ export declare enum SizeUnits {
     YB = "YB"
 }
 export declare const formatBytes: (bytes: number, decimals?: number) => string;
+export declare const isObject: (o: any) => boolean;
 /**
  *
  * @param totalItems

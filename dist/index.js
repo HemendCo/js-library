@@ -131,6 +131,9 @@ export const formatBytes = function (bytes, decimals = 2) {
     let i = Math.floor(Math.log(bytes) / Math.log(k));
     return parseFloat((bytes / Math.pow(k, i)).toFixed(decimals)) + ' ' + sizes[i];
 };
+export const isObject = function (o) {
+    return o !== null && typeof o === 'object' && Array.isArray(o) === false;
+};
 /**
  *
  * @param totalItems

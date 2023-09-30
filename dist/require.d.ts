@@ -15,19 +15,19 @@ declare global {
     }
     interface String {
         toEnNumbers(): string;
-        numberFormat(decimals: number, dec_point: string, thousands_sep: string): string;
+        numberFormat(decimals: number, dec_point?: string, thousands_sep?: string): string;
         isNumeric(): boolean;
         ucfirst(): string;
         lcfirst(): string;
         ucwords(): string;
         sprintf(...args: any[]): string;
-        trim(s: string | undefined): string;
-        lrtrim(s: string | undefined): string;
-        rtrim(s: string | undefined): string;
-        ltrim(s: string | undefined): string;
+        trim(s?: string | undefined): string;
+        lrtrim(s?: string | undefined): string;
+        rtrim(s?: string | undefined): string;
+        ltrim(s?: string | undefined): string;
     }
     interface Number {
-        numberFormat(decimals: number, dec_point: string, thousands_sep: string): string;
+        numberFormat(decimals: number, dec_point?: string, thousands_sep?: string): string;
         isNumeric(): boolean;
         formatBytes(decimals?: number): string;
     }

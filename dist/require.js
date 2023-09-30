@@ -216,7 +216,7 @@ if (!String.prototype.lrtrim) {
 if (!String.prototype.ltrim) {
     Object.defineProperty(String.prototype, 'ltrim', {
         value: function (s) {
-            if (s == undefined) {
+            if (s == undefined || s == null) {
                 s = '\\s';
             }
             return this.replace(new RegExp('^[' + s + ']*'), '');
@@ -226,7 +226,7 @@ if (!String.prototype.ltrim) {
 if (!String.prototype.rtrim) {
     Object.defineProperty(String.prototype, 'rtrim', {
         value: function (s) {
-            if (s == undefined) {
+            if (s == undefined || s == null) {
                 s = '\\s';
             }
             return this.replace(new RegExp('[' + s + ']*$'), '');
