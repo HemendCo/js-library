@@ -150,6 +150,10 @@ export const formatBytes = function(bytes: number, decimals: number = 2) {
   return parseFloat((bytes / Math.pow(k, i)).toFixed(decimals)) + ' ' + sizes[i];
 }
 
+export const isObject = function(o: any) : boolean {
+  return o !== null && typeof o === 'object' && Array.isArray(o) === false;
+}
+
 /**
  * 
  * @param totalItems 

@@ -1,10 +1,11 @@
 export {};
 
-import { formatBytes } from './index'
+import { formatBytes, isObject } from './index'
 
 declare global {
   interface Object {
     clone(): Object;
+    isObject(): boolean;
   }
 
   interface Array<T> {
@@ -16,6 +17,7 @@ declare global {
     shuffle(): Array<T>;
     unique(): Array<T>;
     clone(): Array<T>;
+    isObject(): boolean;
   }
 
   interface String {
@@ -30,13 +32,47 @@ declare global {
     lrtrim(s?: string|undefined): string;
     rtrim(s?: string|undefined): string;
     ltrim(s?: string|undefined): string;
+    isObject(): boolean;
   }
 
   interface Number {
     numberFormat(decimals: number, dec_point?: string, thousands_sep?: string): string;
     isNumeric(): boolean;
     formatBytes(decimals?: number): string;
+    isObject(): boolean;
   }
+}
+
+if (!Object.prototype.isObject) {
+  Object.defineProperty(Object.prototype, 'isObject', {
+    value: function(this: any): boolean {
+      return isObject(this);
+    }
+  });
+}
+
+if (!Array.prototype.isObject) {
+  Object.defineProperty(Array.prototype, 'isObject', {
+    value: function(this: any): boolean {
+      return isObject(this);
+    }
+  });
+}
+
+if (!Number.prototype.isObject) {
+  Object.defineProperty(Number.prototype, 'isObject', {
+    value: function(this: number): boolean {
+      return isObject(this);
+    }
+  });
+}
+
+if (!String.prototype.isObject) {
+  Object.defineProperty(String.prototype, 'isObject', {
+    value: function(this: string): boolean {
+      return isObject(this);
+    }
+  });
 }
 
 if (!Array.prototype.includes) {
