@@ -1,8 +1,5 @@
 export {};
 declare global {
-    interface Object {
-        clone(): Object;
-    }
     interface Array<T> {
         includes(elem: T): boolean;
         contains(elem: T): boolean;
