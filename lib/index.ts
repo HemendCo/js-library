@@ -1,5 +1,9 @@
 import { PageTitleNotificationInterface,  PagerInterface } from './interface';
 
+export * from './array';
+export * from './number';
+export * from './string';
+
 export { default as countDownTimer } from './countDownTimer';
 export { default as storage } from './storage';
 export { default as storageBridge } from './storageBridge';
@@ -139,15 +143,6 @@ export enum SizeUnits {
   EB = 'EB',
   ZB = 'ZB',
   YB = 'YB'
-}
-
-export const formatBytes = function(bytes: number, decimals: number = 2) {
-  if(bytes == 0) return '0 B';
-  decimals = decimals === undefined ? 2 : decimals
-  let k = 1024; //Or 1 kilo = 1000
-  let sizes = ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
-  let i = Math.floor(Math.log(bytes) / Math.log(k));
-  return parseFloat((bytes / Math.pow(k, i)).toFixed(decimals)) + ' ' + sizes[i];
 }
 
 export const isObject = function(o: any) : boolean {

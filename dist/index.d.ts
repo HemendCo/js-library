@@ -1,4 +1,7 @@
 import { PageTitleNotificationInterface, PagerInterface } from './interface';
+export * from './array';
+export * from './number';
+export * from './string';
 export { default as countDownTimer } from './countDownTimer';
 export { default as storage } from './storage';
 export { default as storageBridge } from './storageBridge';
@@ -39,7 +42,7 @@ export declare function leftPad(number: number, targetLength: number): string;
 export declare const randomInteger: (min: number, max: number) => number;
 export declare const randomNumber: (min: number, max: number) => number;
 export declare const randomBetween: (min: number, max: number, interval: number) => number;
-export declare const sprintf: (str: string) => string;
+export declare const sprintf: (str: string) => any;
 export declare enum SizeUnits {
     Bytes = "Bytes",
     KB = "KB",
@@ -51,7 +54,6 @@ export declare enum SizeUnits {
     ZB = "ZB",
     YB = "YB"
 }
-export declare const formatBytes: (bytes: number, decimals?: number) => string;
 export declare const isObject: (o: any) => boolean;
 /**
  *
