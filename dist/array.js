@@ -1,3 +1,6 @@
+export const isObject = function (o) {
+    return o !== null && typeof o === 'object' && Array.isArray(o) === false;
+};
 export function unique(arr) {
     return Array.from(new Set(arr));
 }

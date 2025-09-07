@@ -103,31 +103,6 @@ export const randomBetween = function (min, max, interval) {
     let r = Math.floor(Math.random() * (max - min + interval) / interval);
     return r * interval + min;
 };
-export const sprintf = function (str) {
-    let args = arguments;
-    delete args[0];
-    let params = [];
-    for (let i in args) {
-        params.push(args[i]);
-    }
-    // @ts-ignore
-    return String.prototype.sprintf.apply(str, params);
-};
-export var SizeUnits;
-(function (SizeUnits) {
-    SizeUnits["Bytes"] = "Bytes";
-    SizeUnits["KB"] = "KB";
-    SizeUnits["MB"] = "MB";
-    SizeUnits["GB"] = "GB";
-    SizeUnits["TB"] = "TB";
-    SizeUnits["PB"] = "PB";
-    SizeUnits["EB"] = "EB";
-    SizeUnits["ZB"] = "ZB";
-    SizeUnits["YB"] = "YB";
-})(SizeUnits || (SizeUnits = {}));
-export const isObject = function (o) {
-    return o !== null && typeof o === 'object' && Array.isArray(o) === false;
-};
 /**
  *
  * @param totalItems

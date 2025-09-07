@@ -1,3 +1,7 @@
+export const isObject = function(o: any) : boolean {
+  return o !== null && typeof o === 'object' && Array.isArray(o) === false;
+}
+
 export function unique<T>(arr: T[]): T[] {
   return Array.from(new Set(arr))
 }

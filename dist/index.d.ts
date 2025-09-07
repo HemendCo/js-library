@@ -42,19 +42,6 @@ export declare function leftPad(number: number, targetLength: number): string;
 export declare const randomInteger: (min: number, max: number) => number;
 export declare const randomNumber: (min: number, max: number) => number;
 export declare const randomBetween: (min: number, max: number, interval: number) => number;
-export declare const sprintf: (str: string) => any;
-export declare enum SizeUnits {
-    Bytes = "Bytes",
-    KB = "KB",
-    MB = "MB",
-    GB = "GB",
-    TB = "TB",
-    PB = "PB",
-    EB = "EB",
-    ZB = "ZB",
-    YB = "YB"
-}
-export declare const isObject: (o: any) => boolean;
 /**
  *
  * @param totalItems

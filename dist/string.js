@@ -27,12 +27,12 @@ export function sprintf(template, ...args) {
     let i = 0;
     return template.replace(/%s/g, () => { var _a; return ((_a = args[i++]) !== null && _a !== void 0 ? _a : '').toString(); });
 }
-export function ltrim(str, s = '\\s') {
-    return str.replace(new RegExp('^[' + s + ']*'), '');
+export function ltrim(str, chars = '\\s') {
+    return str.replace(new RegExp('^[' + chars + ']*'), '');
 }
-export function rtrim(str, s = '\\s') {
-    return str.replace(new RegExp('[' + s + ']*$'), '');
+export function rtrim(str, chars = '\\s') {
+    return str.replace(new RegExp('[' + chars + ']*$'), '');
 }
-export function lrtrim(str, s = '\\s') {
-    return ltrim(rtrim(str, s), s);
+export function lrtrim(str, chars = '\\s') {
+    return ltrim(rtrim(str, chars), chars);
 }
